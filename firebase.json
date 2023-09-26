@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "manage-users-app-v3",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

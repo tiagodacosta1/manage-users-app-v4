@@ -97,6 +97,13 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2,
+            "browserTarget": "manage-users-app-v3:build:production"
+          }
         }
       }
     }

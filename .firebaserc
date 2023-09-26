@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tiago-aut-playground": {
+      "hosting": {
+        "manage-users-app-v3": [
+          "tiago-aut-playground"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tiago-aut-playground"
+  }
+}
