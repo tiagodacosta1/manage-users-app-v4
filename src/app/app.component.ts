@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'manage-users-app-v3';
-  firestore: Firestore = inject(Firestore);
-  items$: Observable<any[]>;
+export class AppComponent implements OnInit {
+  public items$: Observable<any[]>;
 
-  constructor() {
-    const aCollection = collection(this.firestore, '/items');
-    this.items$ = collectionData(aCollection);
+  constructor(private readonly firestore: Firestore) {}
+
+  public ngOnInit(): void {
+    const itemsCollection = collection(this.firestore, 'items');
+    this.items$ = collectionData(itemsCollection);
   }
 }
