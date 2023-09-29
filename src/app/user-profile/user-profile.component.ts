@@ -7,11 +7,11 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent {
-  user = { name: '', email: '' };
+  user = { name: '', role: '', email: '' };
 
   constructor(private readonly firestore: Firestore) {}
 
-  async addUser(user: { name: string; email: string }) {
+  async addUser(user: { name: string; role: string; email: string }) {
     try {
       const usersCollection = collection(this.firestore, 'users'); // 'users' is the name of the Firestore collection
 
@@ -29,6 +29,6 @@ export class UserProfileComponent {
     this.addUser(this.user);
 
     // Optionally, you can reset the form after submission
-    this.user = { name: '', email: '' };
+    this.user = { name: '', role: '', email: '' };
   }
 }
