@@ -1,20 +1,22 @@
-<div class="user-profile">
-  <h2>Add a New User</h2>
-  <form (submit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name" [(ngModel)]="user.name" required />
-    </div>
-    <div class="form-group">
-      <label for="role">Role:</label>
-      <input type="text" id="role" [(ngModel)]="user.role" required />
-    </div>
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="user.email" required />
-    </div>
-
-    <!-- Add other form fields as needed -->
-    <button type="submit">Add User</button>
-  </form>
-</div>
+<form (submit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="user.name" required />
+  </div>
+  <div class="form-group">
+    <label for="role">Role:</label>
+    <input type="text" id="role" name="role" [(ngModel)]="user.role" required />
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="user.email"
+      required
+    />
+  </div>
+  <!-- Add other form fields as needed -->
+  <button type="submit">Add User</button>
+</form>
