@@ -1,28 +1,36 @@
+import { Injectable } from '@angular/core';
 import {
   Firestore,
-  addDoc,
   collection,
+  addDoc,
   collectionData,
-  doc,
+  DocumentData,
 } from '@angular/fire/firestore';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(public readonly firestore: Firestore) {}
+  private userCollection = collection(this.firestore, 'users');
+  users$: Observable<any[]>; // Define the users$ observable
+
+  constructor(public readonly firestore: Firestore) {
+    // Initialize the users$ observable in the constructor
+    this.users$ = collectionData(this.userCollection) as Observable<any[]>;
+  }
 
   async addUser(user: { name: string; role: string; email: string }) {
     try {
-      const usersCollection = collection(this.firestore, 'users'); // 'users' is the name of the Firestore collection
       // Add a new document to the 'users' collection
-      const newUserRef = await addDoc(usersCollection, user);
-
+      const newUserRef = await addDoc(this.userCollection, user);
       console.log('User added with ID: ', newUserRef.id);
     } catch (error) {
       console.error('Error adding user: ', error);
     }
+  }
+
+  getUsers(): Observable<any[]> {
+    return this.users$; // Return the users$ observable
   }
 }
