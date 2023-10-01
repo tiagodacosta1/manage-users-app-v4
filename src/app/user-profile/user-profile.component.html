@@ -1,4 +1,5 @@
 <form (submit)="onSubmit()">
+  <h2>Add User</h2>
   <div class="form-group">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" [(ngModel)]="user.name" required />
@@ -17,6 +18,5 @@
       required
     />
   </div>
-  <!-- Add other form fields as needed -->
   <button type="submit">Add User</button>
 </form>

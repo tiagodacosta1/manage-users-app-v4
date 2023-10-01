@@ -9,6 +9,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FormsModule } from '@angular/forms';
 import { DisplayUsersComponent } from './display-users/display-users.component';
+import { UsersService } from './users.service';
 @NgModule({
   declarations: [AppComponent, UserProfileComponent, DisplayUsersComponent],
   imports: [
