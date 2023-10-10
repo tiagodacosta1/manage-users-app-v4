@@ -7,13 +7,4 @@ import { Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  public items$: Observable<any[]>;
-
-  constructor(private readonly firestore: Firestore) {}
-
-  public ngOnInit(): void {
-    const itemsCollection = collection(this.firestore, 'users');
-    this.items$ = collectionData(itemsCollection);
-  }
-}
+export class AppComponent {}
