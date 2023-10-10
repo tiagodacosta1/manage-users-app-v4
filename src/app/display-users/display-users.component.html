@@ -1,4 +1,9 @@
 <h2>User List</h2>
 <ul>
-  <li *ngFor="let user of users$">{{ user.name }}</li>
+  <li *ngFor="let user of users$">
+    {{ user.name }} <button>Edit</button>
+    <!-- <button (click)="toggleUser(user)">
+      {{ user.isActive ? "On" : "Off" }}
+    </button> -->
+  </li>
 </ul>

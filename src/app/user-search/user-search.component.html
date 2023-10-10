@@ -1,0 +1,24 @@
+<div>
+  <h2>User Search</h2>
+  <label for="searchQuery">Search by Username or Role:</label>
+  <input
+    type="text"
+    id="searchQuery"
+    [(ngModel)]="searchQuery"
+    (input)="searchUsers()"
+  />
+  <button (click)="searchUsers()">Search</button>
+
+  <div *ngIf="searchResults.length === 0">
+    <p>No matching users found.</p>
+  </div>
+
+  <div *ngIf="searchResults.length > 0">
+    <h3>Matching Users:</h3>
+    <ul>
+      <li *ngFor="let user of searchResults">
+        {{ user.name }} ({{ user.role }})
+      </li>
+    </ul>
+  </div>
+</div>

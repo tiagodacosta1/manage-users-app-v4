@@ -1,7 +1,4 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Firestore, collection } from 'firebase/firestore';
-import { collectionData } from 'rxfire/firestore';
-import { Observable } from 'rxjs';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -16,8 +13,8 @@ export class DisplayUsersComponent {
 
   ngOnInit() {
     // Subscribe to the getUsers observable
-    this.usersService.getUsers().subscribe((users) => {
-      this.users$ = users;
+    this.usersService.getUsers().subscribe((usersFirestore) => {
+      this.users$ = usersFirestore;
     });
   }
 }
