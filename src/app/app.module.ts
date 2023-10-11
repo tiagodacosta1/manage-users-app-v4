@@ -9,7 +9,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DisplayUsersComponent } from './display-users/display-users.component';
-import { UserSearchComponent } from './user-search/user-search.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,12 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UserProfileComponent,
-    DisplayUsersComponent,
-    UserSearchComponent,
-  ],
+  declarations: [AppComponent, UserProfileComponent, DisplayUsersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
