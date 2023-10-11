@@ -24,10 +24,10 @@ export class UsersService {
     this.users$ = collectionData(this.userCollection);
   }
 
-  async addUser(user: { name: string; role: string; email: string }) {
+  async addUser(User: any) {
     try {
       // Add a new document to the 'users' collection
-      const newUserRef = addDoc(this.userCollection, user);
+      const newUserRef = addDoc(this.userCollection, User);
       console.log('User added with ID: ', (await newUserRef).id);
     } catch (error) {
       console.error('Error adding user: ', error);

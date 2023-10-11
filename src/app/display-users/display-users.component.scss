@@ -1,26 +1,13 @@
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 16px;
+table {
+  width: 100%;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
 }
 
-li {
-  padding: 8px 16px;
-  border: 1px solid #ccc;
-  margin-bottom: 8px;
-  cursor: pointer;
-
-  &.selected {
-    background-color: #007bff;
-    color: #fff;
-  }
-
-  &:hover {
-    background-color: #f0f0f0;
-  }
+td,
+th {
+  width: 25%;
 }
