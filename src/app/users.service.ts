@@ -48,27 +48,4 @@ export class UsersService {
       console.error('Error deleting user: ', error);
     }
   }
-
-  // searchUsers(queryText: string): Observable<any[]> {
-  //   // Create a query to filter users by username or role
-  //   const searchQuery = query(
-  //     this.userCollection,
-  //     where('name', '==', queryText),
-  //     orderBy('name'),
-  //     orderBy('role')
-  //   );
-
-  // Return the filtered users as an observable
-  // return collectionData(searchQuery);
 }
-
-//   async updateUser(userId: string, userData: any) {
-//     try {
-//       const userDocRef = doc(this.firestore, 'users', userId);
-//       await updateDoc(userDocRef, userData);
-//       console.log('User updated with ID: ', userId);
-//     } catch (error) {
-//       console.error('Error updating user: ', error);
-//     }
-//   }
-// }
