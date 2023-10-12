@@ -28,14 +28,6 @@ export class DisplayUsersComponent implements OnInit {
       },
     });
   }
-  // users$: any[] = [];
-  // constructor(private usersService: UsersService) {}
-  // ngOnInit() {
-  //   // Subscribe to the getUsers observable
-  //   this.usersService.getUsers().subscribe((usersFirestore) => {
-  //     this.users$ = usersFirestore;
-  //   });
-  // }
 
   displayedColumns: string[] = [
     'id',
@@ -45,6 +37,7 @@ export class DisplayUsersComponent implements OnInit {
     'dob',
     'role',
     'balance',
+    'action',
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -57,6 +50,14 @@ export class DisplayUsersComponent implements OnInit {
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
+    }
+  }
+  async deleteUser(id: string) {
+    try {
+      await this.usersService.deleteUser(id);
+      console.log('User deleted successfully');
+    } catch (error) {
+      console.error('Error deleting user: ', error);
     }
   }
 }

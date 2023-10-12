@@ -8,7 +8,8 @@ import {
   where,
   orderBy,
   doc,
-  updateDoc, // Add this import
+  updateDoc,
+  deleteDoc, // Add this import
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -35,29 +36,39 @@ export class UsersService {
   }
 
   getUsers(): Observable<any[]> {
-    return this.users$; // Return the users$ observable
+    return collectionData(this.userCollection, { idField: 'id' });
   }
 
-  searchUsers(queryText: string): Observable<any[]> {
-    // Create a query to filter users by username or role
-    const searchQuery = query(
-      this.userCollection,
-      where('name', '==', queryText),
-      orderBy('name'),
-      orderBy('role')
-    );
-
-    // Return the filtered users as an observable
-    return collectionData(searchQuery);
-  }
-
-  async updateUser(userId: string, userData: any) {
+  async deleteUser(id: string): Promise<void> {
     try {
-      const userDocRef = doc(this.firestore, 'users', userId);
-      await updateDoc(userDocRef, userData);
-      console.log('User updated with ID: ', userId);
+      const userDocRef = doc(this.userCollection, id);
+      await deleteDoc(userDocRef);
+      console.log('User deleted successfully');
     } catch (error) {
-      console.error('Error updating user: ', error);
+      console.error('Error deleting user: ', error);
     }
   }
+
+  // searchUsers(queryText: string): Observable<any[]> {
+  //   // Create a query to filter users by username or role
+  //   const searchQuery = query(
+  //     this.userCollection,
+  //     where('name', '==', queryText),
+  //     orderBy('name'),
+  //     orderBy('role')
+  //   );
+
+  // Return the filtered users as an observable
+  // return collectionData(searchQuery);
 }
+
+//   async updateUser(userId: string, userData: any) {
+//     try {
+//       const userDocRef = doc(this.firestore, 'users', userId);
+//       await updateDoc(userDocRef, userData);
+//       console.log('User updated with ID: ', userId);
+//     } catch (error) {
+//       console.error('Error updating user: ', error);
+//     }
+//   }
+// }
