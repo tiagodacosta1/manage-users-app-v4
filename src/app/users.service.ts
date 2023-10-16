@@ -54,19 +54,19 @@ export class UsersService {
     }
   }
 
-  updateUser(id: string, newData: any): Promise<void> {
-    try {
-      const userDocRef = doc(this.userCollection, id);
-      return updateDoc(userDocRef, newData);
-    } catch (error) {
-      console.error('Error updating user: ', error);
-      return Promise.reject(error);
-    }
+  openEditForm(data: any) {
+    this._dialog.open(UserProfileComponent, {
+      data,
+    });
   }
 
-  openEditForm(user: any) {
-    const dialogRef = this._dialog.open(UserProfileComponent, {
-      data: user, // Pass user data to the dialog component
-    });
+  async updateUser(id: string, updatedUserData: any): Promise<void> {
+    try {
+      const userDocRef = doc(this.userCollection, id);
+      await updateDoc(userDocRef, updatedUserData);
+      console.log('User updated successfully');
+    } catch (error) {
+      console.error('Error updating user: ', error);
+    }
   }
 }

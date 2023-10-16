@@ -1,7 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private usersService: UsersService,
+    private _dialogRef: MatDialogRef<UserProfileComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.empForm = this._fb.group({
@@ -28,8 +33,25 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.empForm.patchValue(this.data);
   }
+
   onFormSubmit() {
-    this.usersService.addUser(this.empForm.value); // Send form data to the service
-    this.empForm.reset(); // Reset the form
+    if (this.data) {
+      const userId = this.data.id;
+      const updatedUserData = this.empForm.value;
+
+      this.usersService
+        .updateUser(userId, updatedUserData)
+        .then(() => {
+          console.log('User updated successfully');
+          // Perform any additional actions after the update if needed
+        })
+        .catch((error) => {
+          console.error('Error updating user: ', error);
+          // Handle the error if necessary
+        });
+    } else {
+      this.usersService.addUser(this.empForm.value);
+      this.empForm.reset();
+    }
   }
 }

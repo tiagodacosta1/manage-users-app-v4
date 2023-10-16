@@ -14,9 +14,7 @@ import { UserProfileComponent } from '../user-profile/user-profile.component';
   styleUrls: ['./display-users.component.scss'],
 })
 export class DisplayUsersComponent implements OnInit {
-  ngOnInit(): void {
-    this.usersService.getUsers();
-  }
+  user: any;
   constructor(private usersService: UsersService) {
     usersService.getUsers().subscribe({
       next: (res) => {
@@ -28,6 +26,9 @@ export class DisplayUsersComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
   displayedColumns: string[] = [
@@ -62,8 +63,7 @@ export class DisplayUsersComponent implements OnInit {
     }
   }
 
-  openUserProfileForEditing(user: any) {
-    // Call the openEditForm method from the UsersService
-    this.usersService.openEditForm(user);
+  openEditForm(data: any) {
+    this.usersService.openEditForm(data);
   }
 }
