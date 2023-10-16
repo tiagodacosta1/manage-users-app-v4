@@ -1,19 +1,15 @@
-import { OnInit, inject } from '@angular/core';
 import { UsersService } from '../users.service';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { UserProfileComponent } from '../user-profile/user-profile.component';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-display-users',
   templateUrl: './display-users.component.html',
   styleUrls: ['./display-users.component.scss'],
 })
-export class DisplayUsersComponent implements OnInit {
+export class DisplayUsersComponent {
   user: any;
   constructor(private usersService: UsersService) {
     usersService.getUsers().subscribe({
@@ -26,9 +22,6 @@ export class DisplayUsersComponent implements OnInit {
         console.log(err);
       },
     });
-  }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   displayedColumns: string[] = [
@@ -57,9 +50,9 @@ export class DisplayUsersComponent implements OnInit {
   async deleteUser(id: string) {
     try {
       await this.usersService.deleteUser(id);
-      console.log('User deleted successfully');
+      alert('User deleted successfully');
     } catch (error) {
-      console.error('Error deleting user: ', error);
+      alert('Error deleting user');
     }
   }
 

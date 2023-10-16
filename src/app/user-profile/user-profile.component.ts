@@ -43,11 +43,9 @@ export class UserProfileComponent implements OnInit {
         .updateUser(userId, updatedUserData)
         .then(() => {
           console.log('User updated successfully');
-          // Perform any additional actions after the update if needed
         })
         .catch((error) => {
           console.error('Error updating user: ', error);
-          // Handle the error if necessary
         });
     } else {
       this.usersService.addUser(this.empForm.value);
