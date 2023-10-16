@@ -6,6 +6,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 @Component({
   selector: 'app-display-users',
@@ -59,5 +60,10 @@ export class DisplayUsersComponent implements OnInit {
     } catch (error) {
       console.error('Error deleting user: ', error);
     }
+  }
+
+  openUserProfileForEditing(user: any) {
+    // Call the openEditForm method from the UsersService
+    this.usersService.openEditForm(user);
   }
 }

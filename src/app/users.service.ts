@@ -11,7 +11,9 @@ import {
   updateDoc,
   deleteDoc, // Add this import
 } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +22,10 @@ export class UsersService {
   private userCollection = collection(this.firestore, 'users');
   users$: Observable<any[]>; // Define the users$ observable
 
-  constructor(public readonly firestore: Firestore) {
+  constructor(
+    public readonly firestore: Firestore,
+    private _dialog: MatDialog
+  ) {
     // Initialize the users$ observable in the constructor
     this.users$ = collectionData(this.userCollection);
   }
@@ -47,5 +52,21 @@ export class UsersService {
     } catch (error) {
       console.error('Error deleting user: ', error);
     }
+  }
+
+  updateUser(id: string, newData: any): Promise<void> {
+    try {
+      const userDocRef = doc(this.userCollection, id);
+      return updateDoc(userDocRef, newData);
+    } catch (error) {
+      console.error('Error updating user: ', error);
+      return Promise.reject(error);
+    }
+  }
+
+  openEditForm(user: any) {
+    const dialogRef = this._dialog.open(UserProfileComponent, {
+      data: user, // Pass user data to the dialog component
+    });
   }
 }
