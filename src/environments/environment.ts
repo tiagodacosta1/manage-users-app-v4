@@ -1,10 +1,11 @@
 export const environment = {
   firebase: {
-    projectId: 'tiago-aut-playground',
-    appId: '1:284409907726:web:0996c878d59194a191ca5f',
-    storageBucket: 'tiago-aut-playground.appspot.com',
-    apiKey: 'AIzaSyAzpG1_Zo14b2oDMJdByviviFZmziUAUkU',
-    authDomain: 'tiago-aut-playground.firebaseapp.com',
-    messagingSenderId: '284409907726',
+    apiKey: 'AIzaSyA_C7yi7RIzFD_AsJy28H7NSQY-Xs2WKnY',
+    authDomain: 'work-life-balance-40402.firebaseapp.com',
+    projectId: 'work-life-balance-40402',
+    storageBucket: 'work-life-balance-40402.appspot.com',
+    messagingSenderId: '307739655710',
+    appId: '1:307739655710:web:5f8308f4e65bfc2570380f',
+    measurementId: 'G-D7ZBY7ZSJ5',
   },
 };
